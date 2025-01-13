@@ -39,20 +39,44 @@
 # Inheritance
 # When one class (child/derived) derives the properties & methods of another class(parent/base).
 
-class Car:
-    @staticmethod
-    def start():
-        print("car started..")
+# class Car:
+#     @staticmethod
+#     def start():
+#         print("car started..")
 
-    @staticmethod
-    def stop():
-        print("car stopped..")
+#     @staticmethod
+#     def stop():
+#         print("car stopped..")
 
-class ToyotaCar(Car):
-    def __init__(self, name):
-        self.name = name
+# class ToyotaCar(Car):
+#     def __init__(self, name):
+#         self.name = name
 
-car1 = ToyotaCar("fortuner")
-car2 = ToyotaCar("pirus")
+# car1 = ToyotaCar("fortuner")
+# car2 = ToyotaCar("pirus")
 
-print(car1.name)
+# print(car1.name)
+
+
+# Property - We use property decorator on any method in the class to use the method as a property.
+class Student:
+    def __init__(self, phy, chem, math):
+        self.phy = phy 
+        self.chem = chem 
+        self.math = math 
+        self.percentage = str((self.chem + self.phy + self.math) / 3) + "%"
+    
+    # def calcPercentage(self):
+    #     self.percentage = str((self.phy + self.chem + self.math) / 3) + "%"
+    # now we use property decorator
+    @property
+    def percentage(self):
+        return str((self.phy + self.chem + self.math) / 3) + "%"
+    
+stu1 = Student(98, 97, 99)
+print(stu1.percentage)
+
+stu1.phy = 88
+# print(stu1.phy)
+# stu1.calcPercentage()
+print(stu1.percentage)
